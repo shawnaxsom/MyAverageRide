@@ -1,0 +1,11 @@
+integrationserver_orgspan.latest_systest/pub/gen/bin/w32
+integrationserver_ivrplugins.latest_systest/pub/gen/bin/w32
+integrationserver_integrationserver.latest_systest/pub/gen/bin/w32
+integrations_integrationscommon.latest_systest/pub/gen/bin/w32
+integrations_iccommon.latest_systest/pub/gen/bin/w32
+integrations_salesforcecommon.latest_systest/pub/gen/bin/w32
+integrations_zendeskcommon.latest_systest/pub/gen/bin/w32
+integrations_mscrmcommon.latest_systest/pub/gen/bin/w32
+integrations_rightnowcommon.latest_systest/pub/gen/bin/w32
+integrationserver_queueingplugins.latest_systest/pub/gen/bin/w32
+integrationserver_wfmplugins.latest_systest/pub/gen/bin/w32

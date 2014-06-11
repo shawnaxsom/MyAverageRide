@@ -1,0 +1,16 @@
+/* Put your CSS here */
+.ember-application {
+  margin: 100px;
+}
+
+#body-container {
+  width: 30%;
+  float: left;
+  border: thin black solid;
+  padding: 10px;
+}
+
+#left-container {
+  width: 170px;
+  float: left;
+}
