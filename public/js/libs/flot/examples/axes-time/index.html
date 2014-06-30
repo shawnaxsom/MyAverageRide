@@ -1,0 +1,1783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Flot Examples: Time Axes</title>
+	<link href="../examples.css" rel="stylesheet" type="text/css">
+	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="../../excanvas.min.js"></script><![endif]-->
+	<script language="javascript" type="text/javascript" src="../../jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.js"></script>
+	<script language="javascript" type="text/javascript" src="../../jquery.flot.time.js"></script>
+	<script type="text/javascript">
+
+
+
+	$(function() {
+
+	var strava_data = [
+  {
+    "id": 153601718,
+    "resource_state": 2,
+    "external_id": "d7198e825123cd1d3dd32bc4caf04b92",
+    "upload_id": 168005217,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 71295.5,
+    "moving_time": 10989,
+    "elapsed_time": 12406,
+    "total_elevation_gain": 91.9,
+    "type": "Ride",
+    "start_date": "2014-06-14T20:23:58Z",
+    "start_date_local": "2014-06-14T16:23:58Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 2,
+    "kudos_count": 2,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a153601718",
+      "summary_polyline": "whbrFrwdmO{AaEtDmC_BuKhBq\\@c`@sF~@oq@mCw@`A?zJu_@`@Guk@_LgNwoFrBaGq\\mjDC{@}BC`Cq_@LyAa~BiHL[hGqlEFcKiCcgLvAqa@PSbCSeC}\\E[uC~@u@uAXOtDeg@B}Et@a@bBFnZ`@e\\hEiAfc@BRtMvCtDFpGzAZYcBC`BnDMtAqFtEbECjn@aEbIaLpFe@nUsi@P`pDQl@jxBn~EOvAplAPmlAlcCq@Xfg@sHtCgAeD}@xBvExC`B_@|@sDhBh@TvcA_AtHrBxAdaASj@fArpByBo@bP`AjZJ|iAxF|sB|dAt@vg@qAt@uAQqXzi@SKk]pVgA]gw@nyAvRy@ep@l@i]nyATa@kwBltDiB`MpB|KcAtBkGvD_BzMZlBwD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.488,
+    "max_speed": 11.5,
+    "average_watts": 103.5,
+    "kilojoules": 1137.7,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 152865419,
+    "resource_state": 2,
+    "external_id": "43d5993500d056bceb422b7e16bde235",
+    "upload_id": 167208612,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 8081.1,
+    "moving_time": 1010,
+    "elapsed_time": 1010,
+    "total_elevation_gain": 10.4,
+    "type": "Ride",
+    "start_date": "2014-06-13T00:12:09Z",
+    "start_date_local": "2014-06-12T20:12:09Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a152865419",
+      "summary_polyline": "yibrFzwdmOqAlCkRv@gClGyCp@{@aAr@_C_@gWyJ{AeEmH[sIjCo@xE~NGbGcHuJeIY`@iLeMN_CdDnCdPOdF~MvAoNeCjD}RtFdDlJh@`EbH|Hl@[mhAfSnAs@d^tHhGhEiCv@v@iAlYpAfK}DvBdB~D",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 8.001,
+    "max_speed": 13.2,
+    "average_watts": 160.2,
+    "kilojoules": 161.8,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 151636369,
+    "resource_state": 2,
+    "external_id": "21767c317c209b846a0d9caf095d8274",
+    "upload_id": 165892056,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 4126.8,
+    "moving_time": 517,
+    "elapsed_time": 517,
+    "total_elevation_gain": 10.2,
+    "type": "Ride",
+    "start_date": "2014-06-10T00:19:35Z",
+    "start_date_local": "2014-06-09T20:19:35Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a151636369",
+      "summary_polyline": "shbrF~wdmOcCvCyMY_E`CmC~FkCeBW{cB~RdBF|UkAzCtI`K`CkAjAfOs@zF~A~KyD|CnBtD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.982,
+    "max_speed": 13.5,
+    "average_watts": 169.4,
+    "kilojoules": 87.6,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 151118574,
+    "resource_state": 2,
+    "external_id": "8285aabccf4c56686ba3d45822ad8877",
+    "upload_id": 165330105,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 10896.1,
+    "moving_time": 1628,
+    "elapsed_time": 1662,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-06-08T18:38:20Z",
+    "start_date_local": "2014-06-08T14:38:20Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a151118574",
+      "summary_polyline": "aibrFpvdmOqB|D_QSwDzIaL|@cKkBGpGwHjSqId@k@`l@pJbBCiBiq@lAsAk@z@iDwAfDcQl@?kC~AeBqB|BCjCaRx@y@c@\\yAlDCkD[SuMoGq@`Gr@A~R|NBrRiDlPvBpSY|G{Cz@gi@li@i@b@jQr\\IrBkD_@sWbBwLm@_UiAsDcEfCl@zDx@S",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.693,
+    "max_speed": 13.7,
+    "average_watts": 115.4,
+    "kilojoules": 187.8,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 150216311,
+    "resource_state": 2,
+    "external_id": "66f56e5a0370f1c40237e53d9bcbb4c0",
+    "upload_id": 164352000,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 31847.4,
+    "moving_time": 4590,
+    "elapsed_time": 5220,
+    "total_elevation_gain": 98.3,
+    "type": "Ride",
+    "start_date": "2014-06-06T16:29:54Z",
+    "start_date_local": "2014-06-06T12:29:54Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.89,
+      -86.27
+    ],
+    "end_latlng": [
+      39.89,
+      -86.27
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.89,
+    "start_longitude": -86.27,
+    "achievement_count": 6,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 2,
+    "photo_count": 0,
+    "map": {
+      "id": "a150216311",
+      "summary_polyline": "qdnrF|_pmOe`@~@pBjnEnE`GpNo@tAdJ~CbDrJ~ExHz@N~H|CvKtAfaAfUdQRlQxAxJq@lCp@xL{Kd@{@nHNho@oDfBUr[eDp]\\hvAqIbAMzZwLxAF|tAg`GrBqA_aGjb@wg@bOsg@tTgk@~Lid@jIkIxc@oOdbAmx@pbAaJlPaPpSk]mAuAqZFsBqRv@sOkCcSwJuC}EwI_I}C_G_IqJgBe@mdAh_@@",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.938,
+    "max_speed": 15.1,
+    "average_watts": 121.8,
+    "kilojoules": 558.9,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 149574462,
+    "resource_state": 2,
+    "external_id": "6add6d557f887f583bb43d16d0db4569",
+    "upload_id": 163660876,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 4168.3,
+    "moving_time": 559,
+    "elapsed_time": 559,
+    "total_elevation_gain": 10.4,
+    "type": "Ride",
+    "start_date": "2014-06-05T00:11:31Z",
+    "start_date_local": "2014-06-04T20:11:31Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a149574462",
+      "summary_polyline": "whbrFvvdmOcCzDgN[eCpA}C~GaBv@y@oAa@geBnSnAkAp[hIjIpFwAiAfYtAjJqDnDdBtD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.457,
+    "max_speed": 11.8,
+    "average_watts": 146,
+    "kilojoules": 81.6,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 149197213,
+    "resource_state": 2,
+    "external_id": "4f91e2275fb79f0b8cbe5674727b4154",
+    "upload_id": 163253960,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 4127.8,
+    "moving_time": 538,
+    "elapsed_time": 538,
+    "total_elevation_gain": 10.3,
+    "type": "Ride",
+    "start_date": "2014-06-03T23:48:06Z",
+    "start_date_local": "2014-06-03T19:48:06Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 2,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a149197213",
+      "summary_polyline": "wibrFnxdmOqA`C}NOwClBqBlFaEo@IqcB~Rx@OzT_A`F`JnIdFqBqAxXxArKyDlDrBnD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.672,
+    "max_speed": 12.5,
+    "average_watts": 150.4,
+    "kilojoules": 80.9,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 147823705,
+    "resource_state": 2,
+    "external_id": "35457a0059a8993d6d6c6b20dee4f1f0",
+    "upload_id": 161756196,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 13039.5,
+    "moving_time": 1875,
+    "elapsed_time": 1948,
+    "total_elevation_gain": 11,
+    "type": "Ride",
+    "start_date": "2014-05-31T19:55:13Z",
+    "start_date_local": "2014-05-31T15:55:13Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 3,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a147823705",
+      "summary_polyline": "cibrFlxdmOiB`CaOA{BdA_CxF}CVo@kyAav@J_@mk@sJqLmm@YEw`@mGk@LoVlFAHlz@tl@GlKpMVrk@zWc@c@sVqNk@uBxBqCQfVeA?fNbB|Hf\\c@h@kLpQxAg@|\\`IpHbFoBoAhYvAdJcDzC^rD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.954,
+    "max_speed": 12.9,
+    "average_watts": 117.4,
+    "kilojoules": 220.2,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 147337919,
+    "resource_state": 2,
+    "external_id": "7d379705e012491463bbd65d9ff12984",
+    "upload_id": 161228981,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 28590.4,
+    "moving_time": 4113,
+    "elapsed_time": 5349,
+    "total_elevation_gain": 98.2,
+    "type": "Ride",
+    "start_date": "2014-05-30T16:07:20Z",
+    "start_date_local": "2014-05-30T12:07:20Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.89,
+      -86.27
+    ],
+    "end_latlng": [
+      39.89,
+      -86.27
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.89,
+    "start_longitude": -86.27,
+    "achievement_count": 5,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 2,
+    "photo_count": 0,
+    "map": {
+      "id": "a147337919",
+      "summary_polyline": "idnrFhapmOe`@NdB|nEfErF|Nk@~@dH`CrDbLhGzHv@T`IzCpKzAdbApCJnK|KdDbAb@nUfJE}H`@CnZmKnA]fw@sDvBOx[cDb[\\`{@wdB|@_@k\\w@QsrDfBGmpAbQ}TbMeKrL_\\rAyIlARpAsJ|@`@hCqN`No\\tJg`@|KwKdW{GpXkPhv@}n@f`AaI`Q{PnRu[iE_B{VDmBaSz@{MmCuTkKuCiE_IgHoD}HwIsIkAc@odApOg@zLjB`AkAm@eD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.951,
+    "max_speed": 16.2,
+    "average_watts": 128.7,
+    "kilojoules": 529.5,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 147073271,
+    "resource_state": 2,
+    "external_id": "b8ac5c93ffd0505b4fdc09d9c9a3ba2d",
+    "upload_id": 160944338,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 5071.1,
+    "moving_time": 693,
+    "elapsed_time": 693,
+    "total_elevation_gain": 10.4,
+    "type": "Ride",
+    "start_date": "2014-05-29T23:11:08Z",
+    "start_date_local": "2014-05-29T19:11:08Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a147073271",
+      "summary_polyline": "gkbrFvudmO|@~@oArCsMYaFlCqB`FgDGJoX~HKhDgCiBkDkKQ@}[jJgBQuSfAYeLKCmK|QhALfUw@vEdJtInE_C_ApXfAjLiDnCPvC~Aj@",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.318,
+    "max_speed": 12.4,
+    "average_watts": 142.6,
+    "kilojoules": 98.8,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 145539552,
+    "resource_state": 2,
+    "external_id": "162193034b3aa151276d8e94409a6583",
+    "upload_id": 159261589,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 4181.8,
+    "moving_time": 577,
+    "elapsed_time": 577,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-05-25T19:21:48Z",
+    "start_date_local": "2014-05-25T15:21:48Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a145539552",
+      "summary_polyline": "ujbrFhwdmOjAQcAJk@iEtDsB{A_KrAa~@qFv@e\\mCf@fgBjDSjB{ErDkBbN@tBcD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.247,
+    "max_speed": 10.7,
+    "average_watts": 132.7,
+    "kilojoules": 76.6,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 144300894,
+    "resource_state": 2,
+    "external_id": "a672d485f56be3be9a4be74d1236f2cd",
+    "upload_id": 157892942,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 18778.1,
+    "moving_time": 2711,
+    "elapsed_time": 2924,
+    "total_elevation_gain": 95,
+    "type": "Ride",
+    "start_date": "2014-05-22T15:33:37Z",
+    "start_date_local": "2014-05-22T11:33:37Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.89,
+      -86.27
+    ],
+    "end_latlng": [
+      39.89,
+      -86.27
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.89,
+    "start_longitude": -86.27,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 3,
+    "photo_count": 0,
+    "map": {
+      "id": "a144300894",
+      "summary_polyline": "idnrFtapmO_`@C`BrnEvEbGnNi@hA`IvCvDpKvFtHf@H~HtD~Mz@h_AdDr@nQbOi@zQrA|BDbXkKhAoAnc@}QIiGmHyF`Bm^w@zD{O`KmTxFoXjAeSf\\yJcB}aAiDaLSsHyIaAaKeGeC{Dg@mGnXqFzLuMxS_]{\\eAcCeT|@{MoCcSwJkCkEeIuImEeGiHoJqBUydAzOWtLpBt@_C",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 6.927,
+    "max_speed": 16.9,
+    "average_watts": 138.1,
+    "kilojoules": 374.4,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 143652944,
+    "resource_state": 2,
+    "external_id": "5abda14afd74cba95c2310507dae6577",
+    "upload_id": 157179819,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 5109.4,
+    "moving_time": 709,
+    "elapsed_time": 709,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-05-20T22:33:50Z",
+    "start_date_local": "2014-05-20T18:33:50Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 2,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a143652944",
+      "summary_polyline": "uhbrFfwdmO{@Dk@eE|D{B}AeL|A}YCmb@sH|@sYaCc@tLeTDBkLhQUv]dDdHmAeB|_ArAtHkDrCv@pEt@G",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b1286998",
+    "average_speed": 7.206,
+    "max_speed": 13.2,
+    "average_watts": 135.8,
+    "kilojoules": 96.3,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 139000434,
+    "resource_state": 2,
+    "external_id": "5c05cbd322b37606de3be23db3e6fc62",
+    "upload_id": 152102359,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 8024,
+    "moving_time": 1115,
+    "elapsed_time": 1115,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-05-08T21:50:00Z",
+    "start_date_local": "2014-05-08T17:50:00Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 1,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a139000434",
+      "summary_polyline": "ghbrFbwdmOsAGc@eD|DyCyAwIxAga@Qk]wFhAqZeCi@tLg\\DjB|V}LHwE}DRsEjRaAcBoDu@yKZoLqAmByN~@l@~KjN`@lAdIr\\STyLrR|AB~ScAdFnItInFcBgAj[rAlIoDnCn@bEv@?",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 7.196,
+    "max_speed": 11.9,
+    "average_watts": 121.5,
+    "kilojoules": 135.5,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 138667167,
+    "resource_state": 2,
+    "external_id": "184820d50e58b87266d31a1280b3e523",
+    "upload_id": 151734111,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 8490.3,
+    "moving_time": 1196,
+    "elapsed_time": 1196,
+    "total_elevation_gain": 10.1,
+    "type": "Ride",
+    "start_date": "2014-05-07T22:20:55Z",
+    "start_date_local": "2014-05-07T18:20:55Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 3,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a138667167",
+      "summary_polyline": "mhbrFzwdmOeAWi@{DxDwByAeJzAy\\Kaa@wx@uA{@vLs}AbArsB}@t@}LbRxAi@t\\vIzHrEeB{@bYlA~JmD~Cl@xDz@B",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 7.099,
+    "max_speed": 12.1,
+    "average_watts": 134.2,
+    "kilojoules": 160.5,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 138262011,
+    "resource_state": 2,
+    "external_id": "1648fa757f5090328085950ff3cb4eb6",
+    "upload_id": 151294069,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 21280.3,
+    "moving_time": 3202,
+    "elapsed_time": 3268,
+    "total_elevation_gain": 88.7,
+    "type": "Ride",
+    "start_date": "2014-05-06T16:25:57Z",
+    "start_date_local": "2014-05-06T12:25:57Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.89,
+      -86.27
+    ],
+    "end_latlng": [
+      39.89,
+      -86.27
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.89,
+    "start_longitude": -86.27,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 2,
+    "photo_count": 0,
+    "map": {
+      "id": "a138262011",
+      "summary_polyline": "odnrFt`pmO_`@`@dBtmEkQoXu[e_@aOsA_\\cNwTa@f@huBibATVbwAyn@ZrkABrHsXnI}Mbh@aSr~@{u@tIsCzw@{E|IeGdKiMrOsWL}By[I}BiSx@qNgCiSeJkBaFcJeJuEwFgHmJoBYudAx^a@",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.646,
+    "max_speed": 13.1,
+    "average_watts": 122.1,
+    "kilojoules": 391.1,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 137924341,
+    "resource_state": 2,
+    "external_id": "dce52e9c1b743d4e42b69ba95a8e368c",
+    "upload_id": 150927487,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 3766.1,
+    "moving_time": 578,
+    "elapsed_time": 614,
+    "total_elevation_gain": 10.7,
+    "type": "Ride",
+    "start_date": "2014-05-05T23:20:50Z",
+    "start_date_local": "2014-05-05T19:20:50Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a137924341",
+      "summary_polyline": "qibrFvwdmOeAcFxDmAvAjXmAtMChZgD`ByY_@Du\\fIq@pFiFzAvGjMiGSgXoBgFoD`B~AvF",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.516,
+    "max_speed": 12.3,
+    "average_watts": 116.4,
+    "kilojoules": 67.3,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 137330821,
+    "resource_state": 2,
+    "external_id": "35a3364399985cf9c2cc982cd42a80a4",
+    "upload_id": 150281126,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 2506,
+    "moving_time": 388,
+    "elapsed_time": 493,
+    "total_elevation_gain": 10.5,
+    "type": "Ride",
+    "start_date": "2014-05-04T15:16:52Z",
+    "start_date_local": "2014-05-04T11:16:52Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a137330821",
+      "summary_polyline": "{gbrFlwdmOsACk@qDbAkArMeAlB`PgF\\IyF_@pEjFz@p@aFhCwABmIs@~JgBIs@{HeAk@yNfCNhFv@@",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.459,
+    "max_speed": 10.8,
+    "average_watts": 117.6,
+    "kilojoules": 45.6,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 137025393,
+    "resource_state": 2,
+    "external_id": "7f837bf29f9cbd664455acebc476f610",
+    "upload_id": 149946873,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Lunch Ride",
+    "distance": 72290.5,
+    "moving_time": 12528,
+    "elapsed_time": 16785,
+    "total_elevation_gain": 123.3,
+    "type": "Ride",
+    "start_date": "2014-05-03T15:33:38Z",
+    "start_date_local": "2014-05-03T11:33:38Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 2,
+    "kudos_count": 1,
+    "comment_count": 1,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a137025393",
+      "summary_polyline": "ihbrFhwdmOuBsDlDyBxAdIV|PgAhID~W}@dD_]XSyMsAeAub@BDkN]dOiFDt@|a@s@pHsH`Csc@kCoX|EvAruEi@zeAzBzzB{ApM`BjMR~QzQNvQ}B`OtHbb@{DjL{Jt\\YvBhAxM~WfVoDtKaH|HdExRpA~PxQ{ArCaCmAnBbBlCeC`BnAhHnR~J|LsClQ}c@nbBvdFoBp|@`D`bGmCxHr_@bEnh@uFhC@yL|}DmIUguAK~uAu`EjHg_@zGe@f`Ax@rmAsyAh@aBa{BzFAn@yBbBGtAR\\xBYvGiNj@@ypArB_@dAuCtE@RzBOhMgGe@QiK{BeAH{RyNBWyBcCgAfCfBGvAix@TUuy@e\\cBke@^_k@yH_@_h@tAgCoHkCwqB~@cNxEoHkEqr@EsBjDAyD{IoJiDiLaFuHVaBiCD}K_MlGkLtA_LwBi~EvA}@{Ai@]kvBof@M|d@IK_iAbk@kl@P{x@dBi@es@E}@]@gDiCcCxBzHodAbAQ{NqAgE}ElAf@rEz@D",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 5.77,
+    "max_speed": 14.9,
+    "average_watts": 93.8,
+    "kilojoules": 1175.6,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 134845120,
+    "resource_state": 2,
+    "external_id": "4832feb774aadfcb603690838f688578",
+    "upload_id": 147554331,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 12344,
+    "moving_time": 1880,
+    "elapsed_time": 1980,
+    "total_elevation_gain": 44.5,
+    "type": "Ride",
+    "start_date": "2014-04-27T17:27:07Z",
+    "start_date_local": "2014-04-27T13:27:07Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 2,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a134845120",
+      "summary_polyline": "ihbrFjwdmOmB}DtDyByAsLxAcZBua@eJ`@}]uDyOqj@`|@y]mOoYmAgN}T}A}CwCa@w^f@zFrgAFO|y@kfAx_@_P|IdPjl@bXdCJ|RgA`HnIhIhFqBcAl[vAlIgElD~@zD~@Y",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.566,
+    "max_speed": 12.2,
+    "average_watts": 117,
+    "kilojoules": 220,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 134486600,
+    "resource_state": 2,
+    "external_id": "62189be220ddf7a1b1275e2a5ec2ff90",
+    "upload_id": 147158530,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 4624.8,
+    "moving_time": 732,
+    "elapsed_time": 816,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "start_date": "2014-04-26T20:52:51Z",
+    "start_date_local": "2014-04-26T16:52:51Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a134486600",
+      "summary_polyline": "}hbrFzvdmOs@Tm@qExDiBjAzE\\pUwA`KMlYmCjByRe@f@gOr\\RFrJwDjJyLt@NmGxDoFx@aIlDWvA}Zi@{Q{BmEoChCZtEpAG",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.318,
+    "max_speed": 11.6,
+    "average_watts": 123.3,
+    "kilojoules": 90.3,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 134438317,
+    "resource_state": 2,
+    "external_id": "4bab53596659c53d84cdaad3d2445039",
+    "upload_id": 147105800,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 13539.9,
+    "moving_time": 1979,
+    "elapsed_time": 2157,
+    "total_elevation_gain": 13.5,
+    "type": "Ride",
+    "start_date": "2014-04-26T17:57:29Z",
+    "start_date_local": "2014-04-26T13:57:29Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a134438317",
+      "summary_polyline": "khbrFlvdmOgAC_@wC~CyBtAbEf@rP_n@pBaPiC}`@v@JoDnCoCvLFV_ViCwJ^mFvO}AxAqBqBaEcQy@yBuG|@kB`RYFhM`CdDwAvD]rKtIp@tEpHpAwA_@mGcE_MuERrAzLiG_@XsJxAkEsBkDOgLqB}CyAuNeMGmAgIuEOCnTjBPTjKpBZtA`F}@~BtAuAxQ`@AwJ_CkJ|\\QZt`@mBd@zBq@[ym@~RhAaAl\\tDdBrBxEjGyAuAh[xApHmDvDl@nDnAW",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.842,
+    "max_speed": 12.7,
+    "average_watts": 132.3,
+    "kilojoules": 261.9,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 134152493,
+    "resource_state": 2,
+    "external_id": "dd3d8574a7caa0943dedb39e7f939c01",
+    "upload_id": 146795017,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 4917,
+    "moving_time": 742,
+    "elapsed_time": 801,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-04-25T22:25:33Z",
+    "start_date_local": "2014-04-25T18:25:33Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a134152493",
+      "summary_polyline": "yhbrFvvdmOw@d@g@gEpD}BwAcJnBua@Wg\\mc@uBuUt@BzKbUVf@pxAfDYvBwEtDsBdMRbCqD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.627,
+    "max_speed": 11,
+    "average_watts": 117.6,
+    "kilojoules": 87.2,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 133495001,
+    "resource_state": 2,
+    "external_id": "83956365d1dab0491e22f99a6aed1978",
+    "upload_id": 146083787,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 9758.5,
+    "moving_time": 1448,
+    "elapsed_time": 1470,
+    "total_elevation_gain": 11.2,
+    "type": "Ride",
+    "start_date": "2014-04-23T22:25:34Z",
+    "start_date_local": "2014-04-23T18:25:34Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 2,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a133495001",
+      "summary_polyline": "mhbrFhwdmOkByDtDcCyAoJpAw~@qFv@cb@wC_A~BSyBgKFe@zLwFAgAiHsF]QwLqGHr@xLfNd@pDxTBhJsHd@JhVqAvEwAeBcA}IfAgDbD{AE{K@tCnHJjBzB_BrQ`Ib@xCjGlCf@A}GoDaL|KsAQin@`SlAiAr\\`D|@lDjFnFgAaApYnAxIkDxChBfE",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.739,
+    "max_speed": 13.5,
+    "average_watts": 116.7,
+    "kilojoules": 169,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 132794608,
+    "resource_state": 2,
+    "external_id": "201542508a2f2da26f04648a9890f96b",
+    "upload_id": 145318948,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 5625.8,
+    "moving_time": 1005,
+    "elapsed_time": 1187,
+    "total_elevation_gain": 21.6,
+    "type": "Ride",
+    "start_date": "2014-04-21T21:38:14Z",
+    "start_date_local": "2014-04-21T17:38:14Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a132794608",
+      "summary_polyline": "khbrFjwdmOaAEk@{EtNoBhAv@n@bHpC@B}KBrJcCf@[fFmCX{Ak@KeFXdG|Fw@eAaNaCeA{EdBqC_MtAmY~K|D|@wAoAjAaKaE]wYqNTk@hRbIdI~BmCnAZ}@hYlAvJcDnDtApD",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 5.598,
+    "max_speed": 14.2,
+    "average_watts": 106.4,
+    "kilojoules": 106.9,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 132362379,
+    "resource_state": 2,
+    "external_id": "d7411c1f0b79c89fa8f3feeb156ac60d",
+    "upload_id": 144843086,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 6699.1,
+    "moving_time": 1613,
+    "elapsed_time": 4899,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "start_date": "2014-04-20T18:24:31Z",
+    "start_date_local": "2014-04-20T13:24:31Z",
+    "timezone": "(GMT-06:00) America\/Chicago",
+    "start_latlng": [
+      41.61,
+      -87.06
+    ],
+    "end_latlng": [
+      41.61,
+      -87.06
+    ],
+    "location_city": "Chesterton",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 41.61,
+    "start_longitude": -87.06,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a132362379",
+      "summary_polyline": "ib}|FfzkrOy@eKgS[h@qo@uKaBiAbJ|@PwAdJh@t@kClP~@WAza@dCCRqBhAfCJ`\\hT`@|@uAMmK{Nm@VigAdNp@Trc@eAnC`Ac@NuDxBm@nAzJ",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 4.153,
+    "max_speed": 9.4,
+    "average_watts": 55.1,
+    "kilojoules": 88.8,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 132047736,
+    "resource_state": 2,
+    "external_id": "90a2cfa020585dbd35e60d85e00088f3",
+    "upload_id": 144497750,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 5036.5,
+    "moving_time": 903,
+    "elapsed_time": 1033,
+    "total_elevation_gain": 0,
+    "type": "Ride",
+    "start_date": "2014-04-19T22:32:30Z",
+    "start_date_local": "2014-04-19T17:32:30Z",
+    "timezone": "(GMT-06:00) America\/Chicago",
+    "start_latlng": [
+      41.61,
+      -87.06
+    ],
+    "end_latlng": [
+      41.61,
+      -87.06
+    ],
+    "location_city": "Chesterton",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 41.61,
+    "start_longitude": -87.06,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a132047736",
+      "summary_polyline": "uk}|F~mkrO}SP?rMfa@H\\}BtD{@BuDeJeGIiZv@YhSWV|e@OwTuIQOoDhB{IbFYVvA@wAwULXxl@",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 5.578,
+    "max_speed": 9,
+    "average_watts": 93.8,
+    "kilojoules": 84.7,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 131613350,
+    "resource_state": 2,
+    "external_id": "52d9afe1dd7fa6eb5c030bc02ac57185",
+    "upload_id": 144027111,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 5613.2,
+    "moving_time": 877,
+    "elapsed_time": 935,
+    "total_elevation_gain": 10.5,
+    "type": "Ride",
+    "start_date": "2014-04-18T19:35:55Z",
+    "start_date_local": "2014-04-18T15:35:55Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 0,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a131613350",
+      "summary_polyline": "cibrFlwdmO_BcExDmB~BnUyBvPAxZiBbBmSS?qPxPRDhAu@~E_O{@u@rH`Tb@nDqBUuWxAmQ|EoARyBlC{BUmCpCy@FcKo@@GhLsB?aAaIkA{@qE~BgCwAiCxALfFhAZ",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.4,
+    "max_speed": 12.1,
+    "average_watts": 134.3,
+    "kilojoules": 117.8,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 131304032,
+    "resource_state": 2,
+    "external_id": "3f3fbf2be10c975d20d8d72185f5efcf",
+    "upload_id": 143692658,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Afternoon Ride",
+    "distance": 22210.9,
+    "moving_time": 3366,
+    "elapsed_time": 3641,
+    "total_elevation_gain": 47.1,
+    "type": "Ride",
+    "start_date": "2014-04-17T21:43:47Z",
+    "start_date_local": "2014-04-17T17:43:47Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 6,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a131304032",
+      "summary_polyline": "shbrFxwdmOiBuEvDsB}AoKzAk]@o_@dMaFfLyMjKaFt]tAhRnFbPtJzJhAzBfCNjj@|JrCj|ACxJkHfYmLjMoz@hBgDdGY|OfMjJrAbSyGxSmO`Qs\\`AkXjFqP\\oc@iEnTiMb]mApRgDnJZlUs[bUyLlDgF]kS_N_GNcClEwGdh@{DdPeMhDyV`QgvASaz@kP}W~IwDqB{OuWuq@y@k@pRdIdI|E{AiA~WtA`LgDjD~A|C",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 6.599,
+    "max_speed": 14.3,
+    "average_watts": 117.6,
+    "kilojoules": 395.9,
+    "truncated": null,
+    "has_kudoed": false
+  },
+  {
+    "id": 131005596,
+    "resource_state": 2,
+    "external_id": "2e397df48088ad7da0142c5a411305cf",
+    "upload_id": 143370816,
+    "athlete": {
+      "id": 2864880,
+      "resource_state": 1
+    },
+    "name": "Evening Ride",
+    "distance": 7273,
+    "moving_time": 1246,
+    "elapsed_time": 1372,
+    "total_elevation_gain": 10.4,
+    "type": "Ride",
+    "start_date": "2014-04-16T22:28:30Z",
+    "start_date_local": "2014-04-16T18:28:30Z",
+    "timezone": "(GMT-05:00) America\/Indiana\/Indianapolis",
+    "start_latlng": [
+      39.83,
+      -86.21
+    ],
+    "end_latlng": [
+      39.83,
+      -86.21
+    ],
+    "location_city": "Indianapolis",
+    "location_state": "IN",
+    "location_country": "United States",
+    "start_latitude": 39.83,
+    "start_longitude": -86.21,
+    "achievement_count": 1,
+    "kudos_count": 0,
+    "comment_count": 0,
+    "athlete_count": 1,
+    "photo_count": 0,
+    "map": {
+      "id": "a131005596",
+      "summary_polyline": "mibrFjxdmO}@oFvOoBzAjOaE~@sAmBbArBvDC^qFzCaB@aI_ArK_BOqByIkHrBp@lZsAhMB~TeA`Cw\\Jo@u]iY}@kEdNj`@JL_LxJiAvEuEEcC|@nKhFyDpEAFqZoAuEyDpA^nF|@Cs@R",
+      "resource_state": 2
+    },
+    "trainer": false,
+    "commute": false,
+    "manual": false,
+    "private": false,
+    "flagged": false,
+    "gear_id": "b921062",
+    "average_speed": 5.837,
+    "max_speed": 9.5,
+    "average_watts": 101.2,
+    "kilojoules": 126.1,
+    "truncated": null,
+    "has_kudoed": false
+  }
+];
+
+
+			function gen() {
+		// for (var x = 0; x < 4; x++){
+		// 	yield x;
+		// }
+
+		var convertMetersPerSecondToMph = 2.23694;
+
+		var y = [];
+		var ridecount = strava_data.length;
+		for (var x = 0; x < strava_data.length; x++){
+			var ride = strava_data[strava_data.length - x - 1];
+			y.push([x, ride.average_speed * convertMetersPerSecondToMph]);
+		}
+		console.log("strava length: " + strava_data.length)
+		console.log(y);
+		return y;
+	}
+
+		var d = gen();
+
+		// var d = [[-373597200000, 315.71], [-370918800000, 317.45], [-368326800000, 317.50], [-363056400000, 315.86], [-360378000000, 314.93], [-357699600000, 313.19], [-352429200000, 313.34], [-349837200000, 314.67], [-347158800000, 315.58], [-344480400000, 316.47], [-342061200000, 316.65], [-339382800000, 317.71], [-336790800000, 318.29], [-334112400000, 318.16], [-331520400000, 316.55], [-328842000000, 314.80], [-326163600000, 313.84], [-323571600000, 313.34], [-320893200000, 314.81], [-318301200000, 315.59], [-315622800000, 316.43], [-312944400000, 316.97], [-310438800000, 317.58], [-307760400000, 319.03], [-305168400000, 320.03], [-302490000000, 319.59], [-299898000000, 318.18], [-297219600000, 315.91], [-294541200000, 314.16], [-291949200000, 313.83], [-289270800000, 315.00], [-286678800000, 316.19], [-284000400000, 316.89], [-281322000000, 317.70], [-278902800000, 318.54], [-276224400000, 319.48], [-273632400000, 320.58], [-270954000000, 319.78], [-268362000000, 318.58], [-265683600000, 316.79], [-263005200000, 314.99], [-260413200000, 315.31], [-257734800000, 316.10], [-255142800000, 317.01], [-252464400000, 317.94], [-249786000000, 318.56], [-247366800000, 319.69], [-244688400000, 320.58], [-242096400000, 321.01], [-239418000000, 320.61], [-236826000000, 319.61], [-234147600000, 317.40], [-231469200000, 316.26], [-228877200000, 315.42], [-226198800000, 316.69], [-223606800000, 317.69], [-220928400000, 318.74], [-218250000000, 319.08], [-215830800000, 319.86], [-213152400000, 321.39], [-210560400000, 322.24], [-207882000000, 321.47], [-205290000000, 319.74], [-202611600000, 317.77], [-199933200000, 316.21], [-197341200000, 315.99], [-194662800000, 317.07], [-192070800000, 318.36], [-189392400000, 319.57], [-178938000000, 322.23], [-176259600000, 321.89], [-173667600000, 320.44], [-170989200000, 318.70], [-168310800000, 316.70], [-165718800000, 316.87], [-163040400000, 317.68], [-160448400000, 318.71], [-157770000000, 319.44], [-155091600000, 320.44], [-152672400000, 320.89], [-149994000000, 322.13], [-147402000000, 322.16], [-144723600000, 321.87], [-142131600000, 321.21], [-139453200000, 318.87], [-136774800000, 317.81], [-134182800000, 317.30], [-131504400000, 318.87], [-128912400000, 319.42], [-126234000000, 320.62], [-123555600000, 321.59], [-121136400000, 322.39], [-118458000000, 323.70], [-115866000000, 324.07], [-113187600000, 323.75], [-110595600000, 322.40], [-107917200000, 320.37], [-105238800000, 318.64], [-102646800000, 318.10], [-99968400000, 319.79], [-97376400000, 321.03], [-94698000000, 322.33], [-92019600000, 322.50], [-89600400000, 323.04], [-86922000000, 324.42], [-84330000000, 325.00], [-81651600000, 324.09], [-79059600000, 322.55], [-76381200000, 320.92], [-73702800000, 319.26], [-71110800000, 319.39], [-68432400000, 320.72], [-65840400000, 321.96], [-63162000000, 322.57], [-60483600000, 323.15], [-57978000000, 323.89], [-55299600000, 325.02], [-52707600000, 325.57], [-50029200000, 325.36], [-47437200000, 324.14], [-44758800000, 322.11], [-42080400000, 320.33], [-39488400000, 320.25], [-36810000000, 321.32], [-34218000000, 322.90], [-31539600000, 324.00], [-28861200000, 324.42], [-26442000000, 325.64], [-23763600000, 326.66], [-21171600000, 327.38], [-18493200000, 326.70], [-15901200000, 325.89], [-13222800000, 323.67], [-10544400000, 322.38], [-7952400000, 321.78], [-5274000000, 322.85], [-2682000000, 324.12], [-3600000, 325.06], [2674800000, 325.98], [5094000000, 326.93], [7772400000, 328.13], [10364400000, 328.07], [13042800000, 327.66], [15634800000, 326.35], [18313200000, 324.69], [20991600000, 323.10], [23583600000, 323.07], [26262000000, 324.01], [28854000000, 325.13], [31532400000, 326.17], [34210800000, 326.68], [36630000000, 327.18], [39308400000, 327.78], [41900400000, 328.92], [44578800000, 328.57], [47170800000, 327.37], [49849200000, 325.43], [52527600000, 323.36], [55119600000, 323.56], [57798000000, 324.80], [60390000000, 326.01], [63068400000, 326.77], [65746800000, 327.63], [68252400000, 327.75], [70930800000, 329.72], [73522800000, 330.07], [76201200000, 329.09], [78793200000, 328.05], [81471600000, 326.32], [84150000000, 324.84], [86742000000, 325.20], [89420400000, 326.50], [92012400000, 327.55], [94690800000, 328.54], [97369200000, 329.56], [99788400000, 330.30], [102466800000, 331.50], [105058800000, 332.48], [107737200000, 332.07], [110329200000, 330.87], [113007600000, 329.31], [115686000000, 327.51], [118278000000, 327.18], [120956400000, 328.16], [123548400000, 328.64], [126226800000, 329.35], [128905200000, 330.71], [131324400000, 331.48], [134002800000, 332.65], [136594800000, 333.16], [139273200000, 332.06], [141865200000, 330.99], [144543600000, 329.17], [147222000000, 327.41], [149814000000, 327.20], [152492400000, 328.33], [155084400000, 329.50], [157762800000, 330.68], [160441200000, 331.41], [162860400000, 331.85], [165538800000, 333.29], [168130800000, 333.91], [170809200000, 333.40], [173401200000, 331.78], [176079600000, 329.88], [178758000000, 328.57], [181350000000, 328.46], [184028400000, 329.26], [189298800000, 331.71], [191977200000, 332.76], [194482800000, 333.48], [197161200000, 334.78], [199753200000, 334.78], [202431600000, 334.17], [205023600000, 332.78], [207702000000, 330.64], [210380400000, 328.95], [212972400000, 328.77], [215650800000, 330.23], [218242800000, 331.69], [220921200000, 332.70], [223599600000, 333.24], [226018800000, 334.96], [228697200000, 336.04], [231289200000, 336.82], [233967600000, 336.13], [236559600000, 334.73], [239238000000, 332.52], [241916400000, 331.19], [244508400000, 331.19], [247186800000, 332.35], [249778800000, 333.47], [252457200000, 335.11], [255135600000, 335.26], [257554800000, 336.60], [260233200000, 337.77], [262825200000, 338.00], [265503600000, 337.99], [268095600000, 336.48], [270774000000, 334.37], [273452400000, 332.27], [276044400000, 332.41], [278722800000, 333.76], [281314800000, 334.83], [283993200000, 336.21], [286671600000, 336.64], [289090800000, 338.12], [291769200000, 339.02], [294361200000, 339.02], [297039600000, 339.20], [299631600000, 337.58], [302310000000, 335.55], [304988400000, 333.89], [307580400000, 334.14], [310258800000, 335.26], [312850800000, 336.71], [315529200000, 337.81], [318207600000, 338.29], [320713200000, 340.04], [323391600000, 340.86], [325980000000, 341.47], [328658400000, 341.26], [331250400000, 339.29], [333928800000, 337.60], [336607200000, 336.12], [339202800000, 336.08], [341881200000, 337.22], [344473200000, 338.34], [347151600000, 339.36], [349830000000, 340.51], [352249200000, 341.57], [354924000000, 342.56], [357516000000, 343.01], [360194400000, 342.47], [362786400000, 340.71], [365464800000, 338.52], [368143200000, 336.96], [370738800000, 337.13], [373417200000, 338.58], [376009200000, 339.89], [378687600000, 340.93], [381366000000, 341.69], [383785200000, 342.69], [389052000000, 344.30], [391730400000, 343.43], [394322400000, 341.88], [397000800000, 339.89], [399679200000, 337.95], [402274800000, 338.10], [404953200000, 339.27], [407545200000, 340.67], [410223600000, 341.42], [412902000000, 342.68], [415321200000, 343.46], [417996000000, 345.10], [420588000000, 345.76], [423266400000, 345.36], [425858400000, 343.91], [428536800000, 342.05], [431215200000, 340.00], [433810800000, 340.12], [436489200000, 341.33], [439081200000, 342.94], [441759600000, 343.87], [444438000000, 344.60], [446943600000, 345.20], [452210400000, 347.36], [454888800000, 346.74], [457480800000, 345.41], [460159200000, 343.01], [462837600000, 341.23], [465433200000, 341.52], [468111600000, 342.86], [470703600000, 344.41], [473382000000, 345.09], [476060400000, 345.89], [478479600000, 347.49], [481154400000, 348.00], [483746400000, 348.75], [486424800000, 348.19], [489016800000, 346.54], [491695200000, 344.63], [494373600000, 343.03], [496969200000, 342.92], [499647600000, 344.24], [502239600000, 345.62], [504918000000, 346.43], [507596400000, 346.94], [510015600000, 347.88], [512690400000, 349.57], [515282400000, 350.35], [517960800000, 349.72], [520552800000, 347.78], [523231200000, 345.86], [525909600000, 344.84], [528505200000, 344.32], [531183600000, 345.67], [533775600000, 346.88], [536454000000, 348.19], [539132400000, 348.55], [541551600000, 349.52], [544226400000, 351.12], [546818400000, 351.84], [549496800000, 351.49], [552088800000, 349.82], [554767200000, 347.63], [557445600000, 346.38], [560041200000, 346.49], [562719600000, 347.75], [565311600000, 349.03], [567990000000, 350.20], [570668400000, 351.61], [573174000000, 352.22], [575848800000, 353.53], [578440800000, 354.14], [581119200000, 353.62], [583711200000, 352.53], [586389600000, 350.41], [589068000000, 348.84], [591663600000, 348.94], [594342000000, 350.04], [596934000000, 351.29], [599612400000, 352.72], [602290800000, 353.10], [604710000000, 353.65], [607384800000, 355.43], [609976800000, 355.70], [612655200000, 355.11], [615247200000, 353.79], [617925600000, 351.42], [620604000000, 349.81], [623199600000, 350.11], [625878000000, 351.26], [628470000000, 352.63], [631148400000, 353.64], [633826800000, 354.72], [636246000000, 355.49], [638920800000, 356.09], [641512800000, 357.08], [644191200000, 356.11], [646783200000, 354.70], [649461600000, 352.68], [652140000000, 351.05], [654735600000, 351.36], [657414000000, 352.81], [660006000000, 354.22], [662684400000, 354.85], [665362800000, 355.66], [667782000000, 357.04], [670456800000, 358.40], [673048800000, 359.00], [675727200000, 357.99], [678319200000, 356.00], [680997600000, 353.78], [683676000000, 352.20], [686271600000, 352.22], [688950000000, 353.70], [691542000000, 354.98], [694220400000, 356.09], [696898800000, 356.85], [699404400000, 357.73], [702079200000, 358.91], [704671200000, 359.45], [707349600000, 359.19], [709941600000, 356.72], [712620000000, 354.79], [715298400000, 352.79], [717894000000, 353.20], [720572400000, 354.15], [723164400000, 355.39], [725842800000, 356.77], [728521200000, 357.17], [730940400000, 358.26], [733615200000, 359.16], [736207200000, 360.07], [738885600000, 359.41], [741477600000, 357.44], [744156000000, 355.30], [746834400000, 353.87], [749430000000, 354.04], [752108400000, 355.27], [754700400000, 356.70], [757378800000, 358.00], [760057200000, 358.81], [762476400000, 359.68], [765151200000, 361.13], [767743200000, 361.48], [770421600000, 360.60], [773013600000, 359.20], [775692000000, 357.23], [778370400000, 355.42], [780966000000, 355.89], [783644400000, 357.41], [786236400000, 358.74], [788914800000, 359.73], [791593200000, 360.61], [794012400000, 361.58], [796687200000, 363.05], [799279200000, 363.62], [801957600000, 363.03], [804549600000, 361.55], [807228000000, 358.94], [809906400000, 357.93], [812502000000, 357.80], [815180400000, 359.22], [817772400000, 360.44], [820450800000, 361.83], [823129200000, 362.95], [825634800000, 363.91], [828309600000, 364.28], [830901600000, 364.94], [833580000000, 364.70], [836172000000, 363.31], [838850400000, 361.15], [841528800000, 359.40], [844120800000, 359.34], [846802800000, 360.62], [849394800000, 361.96], [852073200000, 362.81], [854751600000, 363.87], [857170800000, 364.25], [859845600000, 366.02], [862437600000, 366.46], [865116000000, 365.32], [867708000000, 364.07], [870386400000, 361.95], [873064800000, 360.06], [875656800000, 360.49], [878338800000, 362.19], [880930800000, 364.12], [883609200000, 364.99], [886287600000, 365.82], [888706800000, 366.95], [891381600000, 368.42], [893973600000, 369.33], [896652000000, 368.78], [899244000000, 367.59], [901922400000, 365.84], [904600800000, 363.83], [907192800000, 364.18], [909874800000, 365.34], [912466800000, 366.93], [915145200000, 367.94], [917823600000, 368.82], [920242800000, 369.46], [922917600000, 370.77], [925509600000, 370.66], [928188000000, 370.10], [930780000000, 369.08], [933458400000, 366.66], [936136800000, 364.60], [938728800000, 365.17], [941410800000, 366.51], [944002800000, 367.89], [946681200000, 369.04], [949359600000, 369.35], [951865200000, 370.38], [954540000000, 371.63], [957132000000, 371.32], [959810400000, 371.53], [962402400000, 369.75], [965080800000, 368.23], [967759200000, 366.87], [970351200000, 366.94], [973033200000, 368.27], [975625200000, 369.64], [978303600000, 370.46], [980982000000, 371.44], [983401200000, 372.37], [986076000000, 373.33], [988668000000, 373.77], [991346400000, 373.09], [993938400000, 371.51], [996616800000, 369.55], [999295200000, 368.12], [1001887200000, 368.38], [1004569200000, 369.66], [1007161200000, 371.11], [1009839600000, 372.36], [1012518000000, 373.09], [1014937200000, 373.81], [1017612000000, 374.93], [1020204000000, 375.58], [1022882400000, 375.44], [1025474400000, 373.86], [1028152800000, 371.77], [1030831200000, 370.73], [1033423200000, 370.50], [1036105200000, 372.18], [1038697200000, 373.70], [1041375600000, 374.92], [1044054000000, 375.62], [1046473200000, 376.51], [1049148000000, 377.75], [1051740000000, 378.54], [1054418400000, 378.20], [1057010400000, 376.68], [1059688800000, 374.43], [1062367200000, 373.11], [1064959200000, 373.10], [1067641200000, 374.77], [1070233200000, 375.97], [1072911600000, 377.03], [1075590000000, 377.87], [1078095600000, 378.88], [1080770400000, 380.42], [1083362400000, 380.62], [1086040800000, 379.70], [1088632800000, 377.43], [1091311200000, 376.32], [1093989600000, 374.19], [1096581600000, 374.47], [1099263600000, 376.15], [1101855600000, 377.51], [1104534000000, 378.43], [1107212400000, 379.70], [1109631600000, 380.92], [1112306400000, 382.18], [1114898400000, 382.45], [1117576800000, 382.14], [1120168800000, 380.60], [1122847200000, 378.64], [1125525600000, 376.73], [1128117600000, 376.84], [1130799600000, 378.29], [1133391600000, 380.06], [1136070000000, 381.40], [1138748400000, 382.20], [1141167600000, 382.66], [1143842400000, 384.69], [1146434400000, 384.94], [1149112800000, 384.01], [1151704800000, 382.14], [1154383200000, 380.31], [1157061600000, 378.81], [1159653600000, 379.03], [1162335600000, 380.17], [1164927600000, 381.85], [1167606000000, 382.94], [1170284400000, 383.86], [1172703600000, 384.49], [1175378400000, 386.37], [1177970400000, 386.54], [1180648800000, 385.98], [1183240800000, 384.36], [1185919200000, 381.85], [1188597600000, 380.74], [1191189600000, 381.15], [1193871600000, 382.38], [1196463600000, 383.94], [1199142000000, 385.44]]; 
+
+		$.plot("#placeholder", [d], {
+			xaxis: { mode: "time" }
+		});
+
+		$("#whole").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: { mode: "time" }
+			});
+		});
+
+		$("#nineties").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					min: (new Date(1990, 0, 1)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime()
+				}
+			});
+		});
+
+		$("#latenineties").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					minTickSize: [1, "year"],
+					min: (new Date(1996, 0, 1)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime()
+				}
+			});
+		});
+
+		$("#ninetyninequarters").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					minTickSize: [1, "quarter"],
+					min: (new Date(1999, 0, 1)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime()
+				}
+			});
+		});
+
+		$("#ninetynine").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					minTickSize: [1, "month"],
+					min: (new Date(1999, 0, 1)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime()
+				}
+			});
+		});
+
+		$("#lastweekninetynine").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					minTickSize: [1, "day"],
+					min: (new Date(1999, 11, 25)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime(),
+					timeformat: "%a"
+				}
+			});
+		});
+
+		$("#lastdayninetynine").click(function () {
+			$.plot("#placeholder", [d], {
+				xaxis: {
+					mode: "time",
+					minTickSize: [1, "hour"],
+					min: (new Date(1999, 11, 31)).getTime(),
+					max: (new Date(2000, 0, 1)).getTime(),
+					twelveHourClock: true
+				}
+			});
+		});
+
+		// Add the Flot version string to the footer
+
+		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+	});
+
+	</script>
+</head>
+<body>
+
+	<div id="header">
+		<h2>Time Axes</h2>
+	</div>
+
+	<div id="content">
+
+		<div class="demo-container">
+			<div id="placeholder" class="demo-placeholder"></div>
+		</div>
+
+		<p>Monthly mean atmospheric CO<sub>2</sub> in PPM at Mauna Loa, Hawaii (source: <a href="http://www.esrl.noaa.gov/gmd/ccgg/trends/">NOAA/ESRL</a>).</p>
+
+		<p>If you tell Flot that an axis represents time, the data will be interpreted as timestamps and the ticks adjusted and formatted accordingly.</p>
+
+		<p>Zoom to: <button id="whole">Whole period</button>
+		<button id="nineties">1990-2000</button>
+		<button id="latenineties">1996-2000</button></p>
+
+		<p>Zoom to: <button id="ninetyninequarters">1999 by quarter</button>
+		<button id="ninetynine">1999 by month</button>
+		<button id="lastweekninetynine">Last week of 1999</button>
+		<button id="lastdayninetynine">Dec. 31, 1999</button></p>
+
+		<p>The timestamps must be specified as Javascript timestamps, as milliseconds since January 1, 1970 00:00. This is like Unix timestamps, but in milliseconds instead of seconds (remember to multiply with 1000!).</p>
+
+		<p>As an extra caveat, the timestamps are interpreted according to UTC and, by default, displayed as such. You can set the axis "timezone" option to "browser" to display the timestamps in the user's timezone, or, if you use timezoneJS, you can specify a time zone.</p>
+
+	</div>
+
+	<div id="footer">
+		Copyright &copy; 2007 - 2014 IOLA and Ole Laursen
+	</div>
+
+</body>
+</html>

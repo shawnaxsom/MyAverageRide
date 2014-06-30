@@ -53,22 +53,43 @@
           
           {{/link-to}}<br/>
           {{format-date ride.date}}<br/>
+          Distance: {{ride.distance}}<br/>
         </p>
       {{/each}}
     </div>
     <div id="body-container">t
+    
+      <div class="demo-container">
+        testplaceholder
+        <div id="placeholder" class="demo-placeholder" style="width:500px;height:500px;"></div>
+      </div>
+
       {{outlet}}
     </div>
   </script>
 
+
   <script type="text/x-handlebars" id="ride">
-    test 2: {{name}}
+    {{name}}
+
+
+    <div class="demo-container">
+      testplaceholder
+      <div id="placeholder" class="demo-placeholder"></div>
+    </div>
+
+    <p id="testdataholder">
+      Test
+    </p>
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.1.js"></script>
-  <!-- <script src="js/libs/ember-data/ember-data.js"></script> -->
+  <script src="js/libs/ember-data/ember-data.js"></script>
+  <script language="javascript" type="text/javascript" src="js/libs/flot/jquery.js"></script>
+  <script language="javascript" type="text/javascript" src="js/libs/flot/jquery.flot.js"></script>
+  <script language="javascript" type="text/javascript" src="js/libs/flot/jquery.flot.time.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="http://momentjs.com/downloads/moment-with-langs.js"></script>
   <script src="js/app.js"></script>

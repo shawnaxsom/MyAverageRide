@@ -31,8 +31,8 @@ function get_rides(token, final_response) {
       query: access_token
   };
 
-  var prot = options.port == 443 ? https : http;
-  var stravaReq = prot.request(options, function(res)
+  var port = options.port == 443 ? https : http;
+  var stravaReq = port.request(options, function(res)
   {
       var output = '';
       res.setEncoding('utf8');
@@ -42,6 +42,7 @@ function get_rides(token, final_response) {
       });
 
       res.on('end', function() {
+          console.log('FINAL OUTPUT: ' + output);
           var obj = JSON.parse(output);
           final_response.send(obj);
       });

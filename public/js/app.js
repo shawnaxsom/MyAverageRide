@@ -1,5 +1,7 @@
 App = Ember.Application.create();
 
+App.Store = DS.Store.extend();
+
 App.Router.map(function() {
   this.resource("rides", function() {
     this.resource("ride", { path: ":id" });
@@ -9,9 +11,9 @@ App.Router.map(function() {
   this.resource("profile");
 });
 
-// App.ApplicationAdapter = DS.RESTAdapter.extend({
-//   namespace: 'api'
-// });
+App.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api'
+});
 
 App.AuthRoute = Ember.Route.extend({
   // redirect: function() {
@@ -19,19 +21,37 @@ App.AuthRoute = Ember.Route.extend({
   // }
 });
 
-App.RidesRoute = Ember.Route.extend({
-  model: function() {
-    return getRidesData();
+App.RidesView = Ember.View.extend({
+  didInsertElement: function () {
+    var d = [[1,2], [2,6]];
+    //var e = gen();
+
+    var convertMetersPerSecondToMph = 2.23694;
+    var d2 = [[0,0]];
+    var model = this.get('controller.model');
+
+    for(var i=0;i<model.length;i++){
+        var ride = model[model.length - i - 1]; // Strava gives us this in reverse order
+        console.log('PUSHING: ' + ride.start_date + ' ' + ride.average_speed);
+        // d2.push([ride.start_date, ride.average_speed]);
+        d2.push([i, ride.average_speed * convertMetersPerSecondToMph]);
+    }
+    console.log(d2);
+
+    $.plot("#placeholder", [d2], {
+      xaxis: { mode: "time" }
+    });
   }
 });
 
-App.RideRoute = Ember.Route.extend({
-  model: function(params) {
-    return getRidesData().then(function(data) { 
-        return data.findBy('id', params.id) 
-      });
-
-    // return $.getJSON('')
+App.RidesRoute = Ember.Route.extend({
+  model: function() {
+    return getRidesData();
+  },
+  setupController: function (controller, model) {
+    console.log('TEST559');
+    console.log(model);
+    controller.set('model', model);       
   }
 });
 
@@ -42,6 +62,7 @@ App.RideController = Ember.ObjectController.extend({
 
   }
 });
+
 
 App.ProfileRoute = Ember.Route.extend({
   // TODO: http://emberjs.com/guides/models/connecting-to-an-http-server/
